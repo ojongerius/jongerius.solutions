@@ -1,0 +1,19 @@
+language: go
+
+go: 1.8
+
+install:
+  - go get -v gopkg.in/spf13/hugo.v0 # Install the latest v0 release -currently 0.20.7
+
+script:
+    - $GOPATH/bin/hugo.v0               # Hugo will default to writing output to public
+
+deploy:
+  provider: pages             # Use the Github Pages provider
+  skip_cleanup: true          # Don't remove the output files of our builds, the provider needs them to deploy
+  local_dir: public # Hugo output will be found here
+  github_token: $GITHUB_TOKEN # As set in travis-ci.org dashboard
+  target_branch: master       # Sites following the user.github.io pattern can only be served from master :|
+  fqdn: www.jongerius.solutions  # Generates CNAME for Github Pages to use
+  on:
+    branch: deploy

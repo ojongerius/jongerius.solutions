@@ -1,0 +1,46 @@
+baseURL = "http://www.jongerius.solutions"
+languageCode = "en-us"
+title = "Jongerius Solutions"
+#theme = "hyde"
+
+#[params]
+#    author = "Otto Jongerius" # For liquorice theme
+#    layoutReverse = true # For Hyde theme
+
+theme = "hucore"
+copyright = "&copy; 2018 | Follow on <a href=\"https://twitter.com/xzu\" target=\"_blank\">Twitter</a> | <a href=\"http://gohugo.io\" target=\"_blank\">Hugo</a> ♥"
+googleAnalytics = "UA-29758853-2"
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+
+[params]
+description = "Jongerius Solutions Consulting"
+keywords = ["devops", "infrastructure", "consulting", "coding"]
+author = "Otto Jongerius"
+sharingicons = true
+
+[params.highlight]
+style = "github"
+languages = ["go", "dockerfile"]
+
+[[params.social]]
+url = "https://github.com/ojongerius"
+fa_icon = "fa-github"
+
+[[params.social]]
+url = "https://twitter.com/xzu"
+fa_icon = "fa-twitter"
+
+[[params.social]]
+url = "https://linkedin.com/in/ottojongerius"
+fa_icon = "fa-linkedin-square"
+
+[[params.social]]
+url = "/index.xml"
+fa_icon = "fa-rss"
+
+[[params.socialshare]]
+url = "https://linkedin.com/in/ottojongerius"
+fa_icon = "fa-linkedin-square"

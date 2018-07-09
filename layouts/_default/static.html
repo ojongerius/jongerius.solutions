@@ -1,0 +1,15 @@
+{{ partial "header" . }}
+{{ partial "nav" . }}
+<section class="section">
+  <div class="container">
+    <h1 class="title">{{ .Title }}</h1>
+    {{ if .Params.tags }}
+      {{ partial "tags" .Params.tags }}
+    {{ end }}
+    <div class="content">
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+{{ partial "footer" . }}
+
