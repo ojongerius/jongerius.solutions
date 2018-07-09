@@ -4,7 +4,7 @@ draft = false
 layout = "static"
 +++
 
-_Infrastructure as code, backend engineering gun for hire_
+_Infrastructure as code and backend engineering gun for hire_
 
 Otto Jongerius recently moved to Wellington, New Zealand and lives with his wife kids and 4 chickens.
 
@@ -17,11 +17,11 @@ of realising a solution.
 
 Available expertise:
 
-* Over ten years of experience with automation technologies like Cfengine, Puppet and Ansible.
+* Configuraiton management: Over ten years of experience with automation technologies like Cfengine, Puppet and Ansible.
 
-* Over 6 years of experience architecting, running and development of private and public clouds. Container and virtualisation orchestration using Xen, VMware, OpenVZ and more recently ECS and Kubernetes.
+* Cloud, container and virtualisation: Over 6 years of experience architecting, running and development of private and public clouds. Container and virtualisation orchestration using Xen, VMware, OpenVZ and more recently ECS and Kubernetes.
 
-* Has successfully designed and developed serverless solutions to minimise operational load and optimise costs.
+* Serverless: Has successfully designed and developed serverless solutions to minimise operational load and optimise costs.
 
 
-Find Otto on [LinkedIn](https://www.linkedin.com/in/ottojongerius)/[Twitter](https://twitter.com/xzu)/[GitHub](https://github.com/ojongerius), or shoot him <a href="mailto:otto@jongerius.solutions">an email to discuss consulting gigs</a>.
+Shoot him shoot <a href="mailto:www+otto@jongerius.solutions">an email to discuss consulting gigs</a>.

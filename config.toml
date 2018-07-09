@@ -9,7 +9,7 @@ title = "Jongerius Solutions"
 
 theme = "hucore"
 copyright = "&copy; 2018 | Follow on <a href=\"https://twitter.com/xzu\" target=\"_blank\">Twitter</a> | <a href=\"http://gohugo.io\" target=\"_blank\">Hugo</a> ♥"
-googleAnalytics = "UA-29758853-2"
+googleAnalytics = "UA-122036719-1"
 
 [taxonomies]
 tag = "tags"
