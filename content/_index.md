@@ -15,7 +15,7 @@ Experienced cloud and software engineer. Strong devops practitioner with experie
 
 Available expertise:
 
-* Configuraiton management: Over ten years of experience with automation technologies like Cfengine, Puppet and Ansible.
+* Configuration management: Over ten years of experience with automation technologies like Cfengine, Puppet and Ansible.
 
 * Cloud, container and virtualisation: Over six years of experience architecting, running and development of private and public clouds. Container and virtualisation orchestration using Xen, VMware, OpenVZ and more recently ECS and Kubernetes.
 
