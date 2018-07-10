@@ -15,7 +15,7 @@ Experienced cloud and software engineer. Strong devops practitioner with experie
 
 Available expertise:
 
-* Backend development: Exprienced developing backend services in Go, Java, Node and Python.
+* Backend development: Experienced developing backend services in Go, Java, Node and Python.
 
 * Configuration management: Over ten years of experience with automation technologies like Cfengine, Puppet and Ansible.
 
