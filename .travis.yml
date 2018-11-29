@@ -9,11 +9,12 @@ script:
     - $GOPATH/bin/hugo.v0               # Hugo will default to writing output to public
 
 deploy:
-  provider: pages             # Use the Github Pages provider
+  provider: s3                # Use the S3 provider
   skip_cleanup: true          # Don't remove the output files of our builds, the provider needs them to deploy
+  bucket: jongerius-solutions # S3 bucket used
+  acl: public_read            # Yup it's a website
   local_dir: public # Hugo output will be found here
-  github_token: $GITHUB_TOKEN # As set in travis-ci.org dashboard
-  target_branch: master       # Sites following the user.github.io pattern can only be served from master :|
-  fqdn: www.jongerius.solutions  # Generates CNAME for Github Pages to use
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
   on:
     branch: deploy
