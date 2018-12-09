@@ -1,5 +1,4 @@
 install:
-  - go get -v gopkg.in/spf13/hugo.v0 # Install the latest v0 release -currently 0.20.7
   - wget https://github.com/gohugoio/hugo/releases/download/v0.52/hugo_0.52_Linux-64bit.deb
   - sudo dpkg -i hugo*.deb
   - pip install Pygments
