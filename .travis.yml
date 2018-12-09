@@ -14,7 +14,7 @@ deploy:
   provider: s3                # Use the S3 provider
   skip_cleanup: true          # Don't remove the output files of our builds, the provider needs them to deploy
   bucket: jongerius-solutions # S3 bucket used
-  acl: public_read            # Yup it's a website
+  #acl: public_read            # Yup it's a website
   local_dir: public # Hugo output will be found here
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
