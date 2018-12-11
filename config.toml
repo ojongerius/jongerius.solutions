@@ -1,4 +1,4 @@
-baseURL = "http://www.jongerius.solutions"
+baseURL = "https://www.jongerius.solutions"
 languageCode = "en-us"
 title = "Jongerius Solutions"
 #theme = "hyde"
