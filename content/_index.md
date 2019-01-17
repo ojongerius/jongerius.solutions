@@ -14,6 +14,7 @@ Experienced cloud and software engineer. Strong devops practitioner with experie
 
 
 Available expertise:
+
 * Cloud, container and virtualisation: Certified AWS Solutions Architect with over six years of experience architecting, running, migrating and development of both private and public clouds. Container and virtualisation orchestration using Xen, VMware, OpenVZ and more recently ECS and Kubernetes.
 
 * Infrastructure as code: Over three years of experience using and extending Terraform to manage AWS infrastructures and monitoring services like Datadog.
