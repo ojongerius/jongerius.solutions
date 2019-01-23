@@ -26,4 +26,4 @@ Available expertise:
 * Configuration management: Over ten years of experience with automation technologies like Cfengine, Puppet and Ansible.
 
 
-Otto is available to hire on a contract basis. Shoot him <a href="mailto:otto@jongerius.solutions">an email to discuss consulting gigs</a>.
+Otto is available to hire on a contract basis. Shoot him <a href="mailto:hello@jongerius.solutions">an email to discuss consulting gigs</a>.
