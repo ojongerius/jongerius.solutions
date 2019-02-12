@@ -32,5 +32,5 @@ Otto is available to hire on a contract basis. Shoot him <a href="mailto:hello@j
 <a target="_blank" href="https://www.certmetrics.com/amazon/public/badge.aspx?i=5&t=c&d=2019-02-12&ci=AWS00679194"><img style="width: 10%; height: 10%" src="aws-devops-pro.png" alt="AWS Certified - DevOps Engineer Professional"></a>
 <a target="_blank" href="https://www.certmetrics.com/amazon/public/badge.aspx?i=3&t=c&d=2019-02-05&ci=AWS00679194"><img style="width: 10%; height: 10%" src="aws-sysops-assoc.png" alt="AWS Certified - SysOps Administrator Associate"></a>
 <a target="_blank" href="https://www.certmetrics.com/amazon/public/badge.aspx?i=1&t=c&d=2019-01-09&ci=AWS00679194"><img style="width: 10%; height: 10%" src="aws-saa.png" alt="AWS Certified - Solutions Architect Associate"></a>
-<a target="_blank" href="https://www.certmetrics.com/amazon/public/badge.aspx?i=2&t=c&d=2018-12-05&ci=AWS00679194"><img style="width: 10%; height: 10%" src="comaws-da.png" alt="AWS Certified - Developer Associate"></a>
+<a target="_blank" href="https://www.certmetrics.com/amazon/public/badge.aspx?i=2&t=c&d=2018-12-05&ci=AWS00679194"><img style="width: 10%; height: 10%" src="aws-da.png" alt="AWS Certified - Developer Associate"></a>
 </center>
