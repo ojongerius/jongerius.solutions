@@ -5,8 +5,17 @@ on:
     branches:
       - deploy
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,12 +29,18 @@ jobs:
       - name: Build
         run: hugo
 
-      - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@master
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          args: --delete
-        env:
-          AWS_S3_BUCKET: jongerius-solutions
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
-          SOURCE_DIR: public
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
