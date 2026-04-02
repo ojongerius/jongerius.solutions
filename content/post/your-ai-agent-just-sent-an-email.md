@@ -57,7 +57,7 @@ But a protocol is only as good as the community that shapes it. The spec is at v
 
 If this problem resonates with you — whether you're building agents, deploying them in production, or thinking about compliance and governance — I'd love your input:
 
-- **Read the spec** at [agentreceipts.ai](https://agentreceipts.ai)
+- **Read the spec** at [Agent Receipts](https://agentreceipts.ai)
 - **Open an issue** or join the discussion at [github.com/agent-receipts](https://github.com/agent-receipts)
 - **Tell me I'm wrong** — if there's a better approach, I want to hear it
 
