@@ -1,37 +1,27 @@
 baseURL = "https://www.jongerius.solutions"
 languageCode = "en-us"
-title = "Jongerius Solutions"
-#theme = "hyde"
-
-#[params]
-#    author = "Otto Jongerius" # For liquorice theme
-#    layoutReverse = true # For Hyde theme
+title = "Otto Jongerius"
 
 theme = "hucore"
-copyright = "&copy; 2018 | Follow on <a href=\"https://twitter.com/xzu\" target=\"_blank\">Twitter</a> | <a href=\"http://gohugo.io\" target=\"_blank\">Hugo</a> ♥"
-googleAnalytics = "UA-122036719-1"
+copyright = "&copy; 2026 Otto Jongerius | <a href=\"https://gohugo.io\" target=\"_blank\">Hugo</a>"
 
 [taxonomies]
 tag = "tags"
 category = "categories"
 
 [params]
-description = "Jongerius Solutions Consulting"
-keywords = ["devops", "infrastructure", "consulting", "coding"]
+description = "Backend developer, open source contributor, AI agent tinkerer"
+keywords = ["software engineering", "backend development", "AI agents", "developer tooling", "open source"]
 author = "Otto Jongerius"
 sharingicons = true
 
 [params.highlight]
 style = "github"
-languages = ["go", "dockerfile"]
+languages = ["go", "dockerfile", "typescript", "python"]
 
 [[params.social]]
 url = "https://github.com/ojongerius"
 fa_icon = "fa-github"
-
-[[params.social]]
-url = "https://twitter.com/xzu"
-fa_icon = "fa-twitter"
 
 [[params.social]]
 url = "https://linkedin.com/in/ottojongerius"
@@ -40,7 +30,3 @@ fa_icon = "fa-linkedin-square"
 [[params.social]]
 url = "/index.xml"
 fa_icon = "fa-rss"
-
-[[params.socialshare]]
-url = "https://linkedin.com/in/ottojongerius"
-fa_icon = "fa-linkedin-square"
