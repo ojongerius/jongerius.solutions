@@ -6,11 +6,12 @@ layout = "static"
 
 Dutch-born, Amsterdam-raised, Sydney-detoured, Wellington-settled.
 
-I work at Forsyth Barr on the engineering team behind Tempo, our retail investment platform. We build the backend services and microservices that clients rely on — and tend to be where new technology and approaches get adopted first across the firm.
+I'm a Senior Backend Developer at [Forsyth Barr](https://www.forsythbarr.co.nz/) on the Tempo team, where we build the backend services and microservices behind their retail investment platform. Before New Zealand, I spent five years at [Atlassian](https://www.atlassian.com) — first in Amsterdam, then Sydney.
 
-Alongside the core platform work, I'm redesigning our portfolio rebalancing system (migrating from Lambda to batch-oriented ECS Fargate) and figuring out where AI genuinely improves outcomes rather than just speed.
+I've spoken at tech events in London, Tokyo, Sydney, and Wellington. These days I'm especially interested in AI agents and developer tooling. I'm building [agent-receipts](https://github.com/ojongerius/agent-receipts) — accountability infrastructure for AI agents.
 
-AWS (ECS Fargate, DynamoDB, EventBridge), TypeScript, distributed systems. Background in cloud infrastructure, container orchestration, and infrastructure-as-code (Terraform, Ansible, Kubernetes).
+AWS (ECS Fargate, DynamoDB, EventBridge), TypeScript, distributed systems. Background in cloud infrastructure, container orchestration, and infrastructure-as-code.
 
+Outside of work, I run a film club focused on auteur cinema.
 
 Get in touch via [email](mailto:hello@jongerius.solutions) or find me on the links above.
