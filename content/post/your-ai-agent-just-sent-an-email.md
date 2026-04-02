@@ -49,6 +49,8 @@ Not a vendor-specific log. Not an observability dashboard. A cryptographically s
 
 A receipt.
 
+![How Agent Receipts work — from authorization to tamper-evident verification](/images/post/agent-receipts-how-it-works.svg)
+
 ---
 
 I've been working on this. It's an open protocol called [Agent Receipts](https://agentreceipts.ai) — an open standard for cryptographically signed, tamper-evident records of AI agent actions. The spec is public, there are working SDKs in TypeScript, Python, and Go, and an MCP proxy that can sit in front of any MCP server to generate receipts automatically.
