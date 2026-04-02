@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "Otto Jongerius"
 
 theme = "hucore"
-copyright = "&copy; 2025 Otto Jongerius | <a href=\"https://gohugo.io\" target=\"_blank\">Hugo</a>"
+copyright = "&copy; 2026 Otto Jongerius | <a href=\"https://gohugo.io\" target=\"_blank\">Hugo</a>"
 
 [taxonomies]
 tag = "tags"
