@@ -45,12 +45,12 @@ The Agent Receipts proxy is a transparent stdin/stdout wrapper. It doesn't modif
 GitHub MCP server or Claude Desktop. It just intercepts the JSON-RPC messages, signs a
 receipt for each tool call, and forwards everything through.
 
-The setup is three commands and a config change.
+The setup is a few commands and a config change.
 
-**Install the proxy:**
+**Install the proxy (tested with v0.3.3):**
 
 ```bash
-go install github.com/agent-receipts/ar/mcp-proxy/cmd/mcp-proxy@latest
+go install github.com/agent-receipts/ar/mcp-proxy/cmd/mcp-proxy@v0.3.3
 ```
 
 **Generate a persistent signing key:**
@@ -58,11 +58,15 @@ go install github.com/agent-receipts/ar/mcp-proxy/cmd/mcp-proxy@latest
 ```bash
 mkdir -p ~/.agent-receipts
 openssl genpkey -algorithm Ed25519 -out ~/.agent-receipts/github-proxy.pem
+chmod 600 ~/.agent-receipts/github-proxy.pem
 openssl pkey -in ~/.agent-receipts/github-proxy.pem -pubout \
   -out ~/.agent-receipts/github-proxy-pub.pem
 ```
 
 **Update `claude_desktop_config.json`:**
+
+> ⚠️ This file contains your GitHub PAT — don't commit it to version control.
+> Use a least-privilege token scoped to only the repos you need.
 
 ```json
 {
@@ -224,8 +228,11 @@ The proxy is open source, ships as a single Go binary, and wraps any MCP server 
 not just GitHub.
 
 ```bash
-go install github.com/agent-receipts/ar/mcp-proxy/cmd/mcp-proxy@latest
+go install github.com/agent-receipts/ar/mcp-proxy/cmd/mcp-proxy@v0.3.3
 ```
+
+Check the [releases page](https://github.com/agent-receipts/ar/releases) for the
+latest version.
 
 Full walkthrough: [Auditing Your GitHub MCP Server with Agent Receipts](https://agentreceipts.ai/mcp-proxy/overview/)
 
