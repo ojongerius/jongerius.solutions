@@ -7,7 +7,8 @@ draft = false
 author = "Otto Jongerius"
 +++
 
-I've been building [Agent Receipts](https://agentreceipts.ai) — an open protocol for
+Greetings from Kyoto! While travelling through Japan I snuck in a few
+moments to work on [Agent Receipts](https://agentreceipts.ai) — an open protocol for
 cryptographically signed audit trails of AI agent actions. The idea is simple: when an
 AI agent does something on your behalf, you should be able to prove what happened. Not
 just logs. Proof.
