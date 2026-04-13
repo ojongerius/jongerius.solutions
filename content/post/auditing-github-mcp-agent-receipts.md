@@ -13,6 +13,8 @@ cryptographically signed audit trails of AI agent actions. The idea is simple: w
 AI agent does something on your behalf, you should be able to prove what happened. Not
 just logs. Proof.
 
+![Working on Agent Receipts from the Shinkansen](/images/post/shinkansen-agent-receipts.jpg)
+
 This week I used it to audit itself.
 
 ---
