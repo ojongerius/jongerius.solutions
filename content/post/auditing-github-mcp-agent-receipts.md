@@ -7,11 +7,7 @@ draft = false
 author = "Otto Jongerius"
 +++
 
-Greetings from Kyoto! While travelling through Japan I snuck in a few
-moments to work on [Agent Receipts](https://agentreceipts.ai) — an open protocol for
-cryptographically signed audit trails of AI agent actions. The idea is simple: when an
-AI agent does something on your behalf, you should be able to prove what happened. Not
-just logs. Proof.
+Somewhere between Kyoto temples I shipped a signing proxy for [Agent Receipts](https://agentreceipts.ai) — an open protocol that gives every AI agent action a cryptographically signed audit trail. The idea is simple: when an agent acts on your behalf, you should be able to prove what happened. Not just logs. Proof.
 
 ![Working on Agent Receipts from the Shinkansen](/images/post/shinkansen-agent-receipts.jpg)
 
