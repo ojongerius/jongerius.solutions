@@ -126,7 +126,7 @@ Each row is a W3C Verifiable Credential stored on disk. Here's the core of one â
       "tool_name": "list_issues",
       "risk_level": "low",
       "target": { "system": "github" },
-      "parameters_hash": "sha256:3846c4a1f3b2e9d7c0581a4f6e2b8d3c9a7f1e4b",
+      "parameters_hash": "sha256:3846c4a1f3b2e9d7c0581a4f6e2b8d3c9a7f1e4bc2d5a8f9e6b3c1d7a4e2f8b6",
       "timestamp": "2026-04-12T06:32:02Z"
     },
     "chain": {
