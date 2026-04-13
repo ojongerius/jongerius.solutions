@@ -3,7 +3,7 @@ date = "2026-04-13T09:00:00+12:00"
 title = "Every GitHub Action My AI Takes Is Now Cryptographically Signed"
 categories = ["AI", "agents"]
 tags = ["AI agents", "MCP", "cryptography", "open source", "GitHub", "audit trail"]
-draft = true
+draft = false
 author = "Otto Jongerius"
 +++
 
