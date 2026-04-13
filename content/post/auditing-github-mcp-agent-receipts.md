@@ -232,6 +232,27 @@ Full walkthrough: [Auditing Your GitHub MCP Server with Agent Receipts](https://
 The spec, SDKs, and proxy are all in the monorepo at
 [github.com/agent-receipts/ar](https://github.com/agent-receipts/ar).
 
-If you're working on MCP tooling, agent governance, or verifiable credentials and want
-to review the protocol design — particularly the forward-looking ADRs on DID methods,
-key rotation, and UCAN delegation — I'd welcome the input.
+---
+
+## Where to contribute
+
+This is an open protocol and we're building it in the open. Here are some concrete
+areas where input would be especially valuable:
+
+**Security:**
+- [Audit secret redaction patterns for edge cases](https://github.com/agent-receipts/ar/issues/150)
+- [Supply chain security: binary signing and verification](https://github.com/agent-receipts/ar/issues/151)
+- [Enforce restrictive file permissions on signing keys](https://github.com/agent-receipts/ar/issues/156)
+- [Document threat model and trust boundaries](https://github.com/agent-receipts/ar/issues/155)
+
+**Protocol design:**
+- [Hash server responses in receipts, not just requests](https://github.com/agent-receipts/ar/issues/153)
+- [Define receipt schema stability and versioning policy](https://github.com/agent-receipts/ar/issues/154)
+- [Receipt export to external systems (SIEM/syslog/OTLP)](https://github.com/agent-receipts/ar/issues/152)
+
+**Developer experience:**
+- [`mcp-proxy init` command for guided setup](https://github.com/agent-receipts/ar/issues/148)
+- [Document proxy crash/timeout behaviour](https://github.com/agent-receipts/ar/issues/149)
+
+If you're working on MCP tooling, agent governance, or verifiable credentials — or if
+you just want to poke holes in the design — pick an issue and jump in.
