@@ -24,11 +24,12 @@ it did.
 
 But that's a claim. Not evidence.
 
-The logs are self-reported. There's no independent witness to what payload was sent,
-which API was called, or what the server actually responded. In most cases that's fine.
-But if you're operating agents in any context where accountability matters — a shared
-codebase, a production system, a compliance environment — "the agent said so" isn't
-enough.
+Imagine an agent silently force-pushes to main, or opens a PR to a repo you didn't
+authorise. The logs say it happened — but those logs are self-reported. There's no
+independent witness to what payload was sent, which API was called, or what the server
+actually responded. If you're operating agents in any context where accountability
+matters — a shared codebase, a production system, a compliance environment — "the
+agent said so" isn't enough.
 
 Cryptographic receipts are the mechanism that closes this gap. A certifying proxy sits
 between the MCP client and the server. Every tool call passes through it. Every call
@@ -107,28 +108,13 @@ urn:receipt:4f123102-8c0a-4c46-abf8-0…  read     low    success   2026-04-12T0
 `Action: read`, `Risk: low` — the proxy recognised `list_issues` as a read operation
 and scored it accordingly.
 
-Each row in that list is a W3C Verifiable Credential stored on disk. Here's what one
-actually looks like:
+Each row is a W3C Verifiable Credential stored on disk. Here's the core of one — the
+`credentialSubject` that records what happened, and the `proof` that signs it:
 
 ```json
 {
-  "@context": [
-    "https://www.w3.org/ns/credentials/v2",
-    "https://agentreceipts.ai/context/v1"
-  ],
-  "id": "urn:receipt:fc72deca-e3b7-49c8-a2c5-8b3f1a2c9d4e",
-  "type": ["VerifiableCredential", "AgentReceipt"],
-  "version": "0.1.0",
-  "issuer": {
-    "id": "did:agent:mcp-proxy"
-  },
-  "issuanceDate": "2026-04-12T06:32:02Z",
   "credentialSubject": {
-    "principal": {
-      "id": "did:user:unknown"
-    },
     "action": {
-      "id": "act_a98cd38a-6bf6-4c14-86f1-cebebf0def83",
       "type": "read",
       "tool_name": "list_issues",
       "risk_level": "low",
@@ -136,24 +122,23 @@ actually looks like:
       "parameters_hash": "sha256:3846c4a1f3b2e9d7c0581a4f6e2b8d3c9a7f1e4b",
       "timestamp": "2026-04-12T06:32:02Z"
     },
-    "outcome": {
-      "status": "success"
-    },
     "chain": {
       "sequence": 1,
-      "chain_id": "fc72deca-e3b7-49c8-a2c5-8b3f1a2c9d4e",
       "previous_receipt_hash": null
     }
   },
   "proof": {
     "type": "Ed25519Signature2020",
-    "created": "2026-04-12T06:32:02Z",
     "verificationMethod": "did:agent:mcp-proxy#key-1",
     "proofPurpose": "assertionMethod",
     "proofValue": "uX3bbrW7YoSWlqZzBvAr5iUjDOA05Na0aPb1efc72de..."
   }
 }
 ```
+
+(The full receipt also includes W3C `@context`, issuer and principal DIDs — currently
+placeholders while the [DID method strategy](https://github.com/agent-receipts/ar/issues/46)
+is finalised — and standard VC envelope fields.)
 
 The `parameters_hash` is a SHA-256 of the RFC 8785 canonical JSON of the tool call
 arguments — the actual payload sent to the GitHub API, not a summary. The `proof` is
