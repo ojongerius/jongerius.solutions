@@ -53,7 +53,7 @@ Status: success: 13
     3  filesystem.file.read            low       success   read                  2026-04-26T22:18:34Z
 ```
 
-Seven `system.command.execute` calls in the first chain — shell execution, classified high-risk by the plugin's taxonomy. Twelve more receipts after that, including some lower-risk file reads in a second session.
+Seven `system.command.execute` calls in the first chain — shell execution, classified high-risk by the plugin's taxonomy. Six more receipts after that, including some lower-risk file reads in a second session.
 
 Every row is a W3C Verifiable Credential on disk: Ed25519-signed, hash-chained to the receipt before it, independently verifiable with the public key. No trust in the agent, no trust in the plugin — just signatures.
 
@@ -118,7 +118,7 @@ Hash for integrity, plaintext for forensics, operator-controlled. The dial accep
 
 I'd seen Agent Receipts work [through the MCP proxy](/post/auditing-github-mcp-agent-receipts/) on my laptop, watching GitHub API reads get signed and chained. What was new this time: a different agent on a different machine, the plugin approach instead of a proxy, high-risk shell commands instead of low-risk API reads — and the moment that made me grin, the agent reaching for the audit trail itself mid-session.
 
-Seven shell commands. Thirteen signed receipts. One chain that anyone with my public key can verify. And one of those receipts is the agent looking at its own.
+Seven shell commands. Thirteen signed receipts. Two chains anyone with my public key can verify. And one of those receipts is the agent looking at its own.
 
 That'll do.
 
