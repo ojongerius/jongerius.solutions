@@ -106,23 +106,11 @@ Hash for integrity, plaintext for forensics, operator-controlled. The dial accep
 
 ---
 
-## An honest note about getting there
-
-This is v0 software, and the path to that first receipts table wasn't smooth. The plugin's `extensions` entry pointed at TypeScript source instead of compiled JS, so install failed out of the box ([openclaw#85](https://github.com/agent-receipts/openclaw/issues/85), fixed in 0.3.1). The CLI was silent under `npx` because an `isDirectRun` check uses `path.resolve()`, which doesn't follow symlinks ([fix branch open](https://github.com/agent-receipts/openclaw/tree/fix/cli-entrypoint-symlink), targeting 0.3.3). The SDK was binding `LIMIT` as TEXT, which returns zero rows on Node v22 ([ar#249](https://github.com/agent-receipts/ar/issues/249), merged). I filed eight issues across two repos and patched the dist directory by hand on EC2 to confirm the symlink fix.
-
-If you're allergic to digging into `node_modules`, give it another release or two.
-
-If you're not, what comes out the other end is genuinely worth seeing.
-
----
-
 ## What I take away
 
-I run agents that take real actions on real systems. Until now, the best I had for "what did it do?" was scrollback and vendor-specific logs.
+I'd seen Agent Receipts work [through the MCP proxy](/post/auditing-github-mcp-agent-receipts/) on my laptop, watching GitHub API reads get signed and chained. What was new this time: a different agent on a different machine, the plugin approach instead of a proxy, high-risk shell commands instead of low-risk API reads — and the moment that made me grin, the agent reaching for the audit trail itself mid-session.
 
-This trial is the first time I've seen the alternative working end-to-end on my own infrastructure: hash-chained W3C Verifiable Credentials signed with Ed25519, privacy-preserving by default, framework-agnostic, with the agent itself able to query the trail it's leaving behind.
-
-Seven shell commands. Thirteen signed receipts. One chain that anyone with my public key can verify.
+Seven shell commands. Thirteen signed receipts. One chain that anyone with my public key can verify. And one of those receipts is the agent looking at its own.
 
 That'll do.
 
