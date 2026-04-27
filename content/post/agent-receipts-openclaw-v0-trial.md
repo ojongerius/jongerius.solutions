@@ -9,7 +9,7 @@ author = "Otto Jongerius"
 
 A few weeks ago I [asked](/post/your-ai-agent-just-sent-an-email/) what it would mean to have proof of what an AI agent actually did on your behalf — not vendor logs or a chat scrollback, but a signed, tamper-evident record.
 
-Last weekend I got to see one. Max Shannon — a Telegram-based AI agent I run on EC2 — sat down for a session and executed seven shell commands. Every one came back out as a cryptographically signed receipt, classified high-risk, hash-chained in sequence. Mid-session, the agent asked to see its own audit trail — and that query has its own receipt too.
+Last weekend I got to see one. Max Shannon — a Telegram-based AI agent I run on EC2 — ran a session and executed seven shell commands. Every one produced a cryptographically signed receipt, classified high-risk, hash-chained in sequence. Mid-session, the agent verified its own audit trail — and that query has its own receipt too.
 
 That's what proof looks like in practice. Here's what showed up on disk.
 
@@ -19,7 +19,7 @@ That's what proof looks like in practice. Here's what showed up on disk.
 
 [Agent Receipts](https://agentreceipts.ai) is an open protocol that turns every AI agent action into a W3C Verifiable Credential. The [OpenClaw plugin](https://github.com/agent-receipts/openclaw) (`@agnt-rcpt/openclaw`) hooks into [OpenClaw](https://github.com/openclaw), intercepts every tool call, classifies it against a taxonomy, signs a receipt, and stores it in a local SQLite database.
 
-My setup: an EC2 instance running OpenClaw as a systemd service (`openclaw-gateway.service`), and Max Shannon — my Telegram-based agent — as the test subject. Run a session, see what comes out.
+My setup: an EC2 instance running OpenClaw as a systemd service (`openclaw-gateway.service`), with Max Shannon as the test subject. Run a session, see what comes out.
 
 ---
 
@@ -53,11 +53,9 @@ Status: success: 13
     3  filesystem.file.read            low       success   read                  2026-04-26T22:18:34Z
 ```
 
-Seven `system.command.execute` calls in the first chain — shell execution, classified high-risk by the plugin's taxonomy mapper before the receipt was even built. Twelve more receipts after that, including some lower-risk file reads in a second session.
+Seven `system.command.execute` calls in the first chain — shell execution, classified high-risk by the plugin's taxonomy. Twelve more receipts after that, including some lower-risk file reads in a second session.
 
 Every row is a W3C Verifiable Credential on disk: Ed25519-signed, hash-chained to the receipt before it, independently verifiable with the public key. No trust in the agent, no trust in the plugin — just signatures.
-
-This is the part I'd been waiting to see. Watching my agent act, and watching the actions show up in a format I can verify.
 
 ---
 
@@ -65,7 +63,7 @@ This is the part I'd been waiting to see. Watching my agent act, and watching th
 
 Look at rows 8 and 10: `ar_query_receipts`.
 
-Max — unprompted — called the plugin's own receipt query tool mid-session and reported back:
+Max — asked to verify the plugin worked — chose to do it by querying its own audit trail, then reported back:
 
 ![Max Shannon's reply: "Plugin Verified!" with the retrieved receipt's ID, action (filesystem.file.read), risk level (low), status (success), and timestamp (2026-04-26T21:10:46.384Z)](/images/post/max-shannon-verification.png)
 
@@ -73,7 +71,7 @@ Row 8 is that query. Row 9 is the receipt Max retrieved (`filesystem.file.read` 
 
 The `unknown` classification on rows 8 and 10 is a minor taxonomy gap ([openclaw#98](https://github.com/agent-receipts/openclaw/issues/98)) — the plugin's own tools aren't mapped in the action taxonomy yet. The receipts exist either way, signed and chained correctly. The self-verification loop closes.
 
-This is the designed use case. Agents that can audit themselves, with that audit attempt itself on the record. It worked on the first real session.
+That's exactly what the protocol is built for: agents that can audit themselves, with that audit attempt itself on the record. It worked on the first real session.
 
 ---
 
