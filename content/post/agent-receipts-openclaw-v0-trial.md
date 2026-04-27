@@ -25,6 +25,12 @@ My setup: an EC2 instance running OpenClaw as a systemd service (`openclaw-gatew
 
 ## Seven high-risk commands, on the record
 
+Here's what I asked Max to do:
+
+![Telegram message: "I'm testing the agent-receipts project, particularly the openclaw plugin I wrote. I just installed it, can you make some tool calls for me to verify it worked?"](/images/post/max-shannon-prompt.png)
+
+Two minutes later, here's what was on disk:
+
 ```
 Total receipts: 13  |  Chains: 2
 Risk: high: 7, low: 4, medium: 2
@@ -59,9 +65,13 @@ This is the part I'd been waiting to see. Watching my agent act, and watching th
 
 Look at rows 8 and 10: `ar_query_receipts`.
 
-Max — unprompted — called the plugin's own receipt query tool mid-session. It asked to see its own audit trail. The plugin captured that call, signed a receipt for it, and chained it in sequence. The agent's act of checking its audit trail is itself in the audit trail.
+Max — unprompted — called the plugin's own receipt query tool mid-session and reported back:
 
-The `unknown` classification is a minor taxonomy gap ([openclaw#98](https://github.com/agent-receipts/openclaw/issues/98)) — the plugin's own tools aren't mapped in the action taxonomy yet. The receipts exist either way, signed and chained correctly. The self-verification loop closes.
+![Max Shannon's reply: "Plugin Verified!" with the retrieved receipt's ID, action (filesystem.file.read), risk level (low), status (success), and timestamp (2026-04-26T21:10:46.384Z)](/images/post/max-shannon-verification.png)
+
+Row 8 is that query. Row 9 is the receipt Max retrieved (`filesystem.file.read` at `21:10:46Z` — match the timestamp on the screenshot). Row 10 is Max running the query again to confirm. The agent's act of checking its audit trail is itself in the audit trail.
+
+The `unknown` classification on rows 8 and 10 is a minor taxonomy gap ([openclaw#98](https://github.com/agent-receipts/openclaw/issues/98)) — the plugin's own tools aren't mapped in the action taxonomy yet. The receipts exist either way, signed and chained correctly. The self-verification loop closes.
 
 This is the designed use case. Agents that can audit themselves, with that audit attempt itself on the record. It worked on the first real session.
 
