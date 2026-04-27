@@ -1,6 +1,6 @@
 +++
 date = "2026-04-27T09:00:00+12:00"
-title = "My Agent's Shell Commands, On the Record"
+title = "My OpenClaw Agent's Shell Commands, On the Record"
 categories = ["AI", "agents"]
 tags = ["AI agents", "agent-receipts", "OpenClaw", "cryptography", "audit trail", "open source"]
 draft = false
