@@ -7,11 +7,15 @@ draft = false
 author = "Otto Jongerius"
 +++
 
-A few weeks ago I [asked](/post/your-ai-agent-just-sent-an-email/) what it would mean to have proof of what an AI agent actually did on your behalf — not vendor logs or a chat scrollback, but a signed, tamper-evident record.
+A few weeks back I [showed cryptographic receipts for AI agent actions](/post/auditing-github-mcp-agent-receipts/) — through an MCP signing proxy, watching every call to the GitHub MCP server. The proxy works for what flows through MCP. Plenty doesn't.
 
-Last weekend I got to see one. Max Shannon — a Telegram-based AI agent I run on EC2 — ran a session and executed seven shell commands. Every one produced a cryptographically signed receipt, classified high-risk, hash-chained in sequence. Mid-session, the agent verified its own audit trail — and that query has its own receipt too.
+[OpenClaw](https://github.com/openclaw) is the dangerous place: it's where agents execute shell commands, read and write files, hit APIs. The blast radius of an AI agent is bounded by the tools it can call, and OpenClaw's the runtime that hands them out. If you're going to have an audit trail anywhere, it's there.
 
-That's what proof looks like in practice. Here's what showed up on disk.
+The good news: instrumentation can be complete. [@agnt-rcpt/openclaw](https://github.com/agent-receipts/openclaw) hooks into OpenClaw's tool-call lifecycle, which fires for every call regardless of source — MCP or built-in or custom plugin. There's no path the agent can take that doesn't pass through the hooks. No sidestepping.
+
+I tried it on Max Shannon, my Telegram-based agent running on EC2. One session: seven shell commands, thirteen signed receipts. Mid-session the agent verified the plugin worked by querying its own audit trail — and that query has its own receipt.
+
+Here's what showed up on disk.
 
 ---
 
@@ -116,7 +120,7 @@ Hash for integrity, plaintext for forensics, operator-controlled. The dial accep
 
 ## What I take away
 
-I'd seen Agent Receipts work [through the MCP proxy](/post/auditing-github-mcp-agent-receipts/) on my laptop, watching GitHub API reads get signed and chained. What was new this time: a different agent on a different machine, the plugin approach instead of a proxy, high-risk shell commands instead of low-risk API reads — and the moment that made me grin, the agent reaching for the audit trail itself mid-session.
+What was new this time wasn't the receipts — it was the completeness. Install one plugin, get a verifiable trail of every tool call the agent makes. And the moment that made me grin: the agent reaching for the audit trail itself mid-session.
 
 Seven shell commands. Thirteen signed receipts. Two chains anyone with my public key can verify. And one of those receipts is the agent looking at its own.
 
