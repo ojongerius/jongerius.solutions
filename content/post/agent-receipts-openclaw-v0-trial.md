@@ -131,3 +131,4 @@ That'll do.
 - Plugin repo: [github.com/agent-receipts/openclaw](https://github.com/agent-receipts/openclaw)
 - Protocol spec + SDKs: [github.com/agent-receipts/ar](https://github.com/agent-receipts/ar)
 - Docs: [agentreceipts.ai](https://agentreceipts.ai)
+- If you want the mechanics: [OpenClaw Plugin Deep Dive](https://agentreceipts.ai/blog/openclaw-plugin-deep-dive/)
