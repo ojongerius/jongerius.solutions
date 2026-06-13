@@ -1,0 +1,11 @@
+# {{ .Site.Title }}
+
+> {{ .Site.Params.Description }}
+
+{{ .Site.Params.author }} — {{ .Site.BaseURL }}
+
+## Posts
+
+{{ range (where .Site.RegularPages "Section" "post").ByDate.Reverse -}}
+- [{{ .Title }}]({{ .Permalink }}): {{ .Summary | plainify | chomp | truncate 200 }}
+{{ end -}}

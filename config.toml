@@ -5,6 +5,14 @@ title = "Otto Jongerius"
 theme = "hucore"
 copyright = "&copy; 2026 Otto Jongerius | <a href=\"https://gohugo.io\" target=\"_blank\">Hugo</a>"
 
+[outputs]
+home = ["HTML", "RSS", "LLMS"]
+
+[outputFormats.LLMS]
+mediaType = "text/plain"
+baseName = "llms"
+isPlainText = true
+
 [taxonomies]
 tag = "tags"
 category = "categories"
