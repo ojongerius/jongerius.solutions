@@ -2,12 +2,40 @@
 <html{{ with .Site.Language.Locale }} lang="{{ . }}"{{ end }}>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta content="{{ delimit .Site.Params.Keywords ", " }}" name="keywords">
-<meta content="{{ .Site.Params.Author }}" name="author">
+
+{{/* Per-page description: explicit front matter, else auto summary, else site default */}}
+{{ $description := .Site.Params.Description }}
+{{ if .IsPage }}
+  {{ with .Description }}{{ $description = . }}{{ else }}{{ $description = .Summary }}{{ end }}
+{{ end }}
+{{ $description = $description | plainify | truncate 160 }}
+
+{{/* Per-page social image: front matter image, else site default */}}
+{{ $image := .Params.image | default .Site.Params.defaultImage | absURL }}
+
+{{ $ogType := cond .IsPage "article" "website" }}
+
+<meta name="keywords" content="{{ delimit .Site.Params.Keywords ", " }}">
+<meta name="author" content="{{ .Site.Params.Author }}">
+<meta name="description" content="{{ $description }}">
+<link rel="canonical" href="{{ .Permalink }}">
+
 <meta property="og:title" content="{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:description" content="{{ .Site.Params.Description }}">
-<meta property="og:type" content="website" />
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:type" content="{{ $ogType }}">
+<meta property="og:image" content="{{ $image }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+{{ if .IsPage }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+{{ end }}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $image }}">
+
 <title>{{ .Title }}{{ if eq .IsHome false }} | {{ .Site.Title }}{{ end }}</title>
 <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/style.css">
 <link rel="shortcut icon" href="{{ .Site.BaseURL }}/wave.ico">
@@ -17,6 +45,41 @@
 {{ else }}
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous" />
 {{ end }}
+
+{{/* Structured data: Article for posts, Person + WebSite for the home page.
+     Build a dict and jsonify once — manual per-field jsonify double-escapes inside <script>. */}}
+{{ if .IsPage }}
+  {{ $schema := dict
+    "@context" "https://schema.org"
+    "@type" "Article"
+    "headline" .Title
+    "description" $description
+    "image" $image
+    "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+    "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+    "author" (dict "@type" "Person" "name" (.Params.author | default .Site.Params.author))
+    "publisher" (dict "@type" "Person" "name" .Site.Params.author)
+    "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+  }}
+<script type="application/ld+json">{{ $schema | jsonify (dict "indent" "  ") | safeJS }}</script>
+{{ else if .IsHome }}
+  {{ $sameAs := slice }}
+  {{ range .Site.Params.social }}{{ if hasPrefix .url "http" }}{{ $sameAs = $sameAs | append .url }}{{ end }}{{ end }}
+  {{ $schema := dict
+    "@context" "https://schema.org"
+    "@type" "WebSite"
+    "url" .Site.BaseURL
+    "name" .Site.Title
+    "description" .Site.Params.Description
+    "author" (dict
+      "@type" "Person"
+      "name" .Site.Params.author
+      "url" .Site.BaseURL
+      "sameAs" $sameAs)
+  }}
+<script type="application/ld+json">{{ $schema | jsonify (dict "indent" "  ") | safeJS }}</script>
+{{ end }}
+
 {{ if not hugo.IsServer }}
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-WKnCByjanGZTw3vXUysKS.js"></script>
