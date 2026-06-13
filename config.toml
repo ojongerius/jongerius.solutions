@@ -14,6 +14,7 @@ description = "Backend developer, open source contributor, AI agent tinkerer"
 keywords = ["software engineering", "backend development", "AI agents", "developer tooling", "open source"]
 author = "Otto Jongerius"
 sharingicons = true
+defaultImage = "/frontier.jpg"
 
 [params.highlight]
 style = "github"
