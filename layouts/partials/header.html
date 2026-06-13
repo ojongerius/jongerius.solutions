@@ -17,7 +17,7 @@
 {{ else }}
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous" />
 {{ end }}
-{{ if not .Site.IsServer }}
+{{ if not hugo.IsServer }}
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-WKnCByjanGZTw3vXUysKS.js"></script>
 <script>
