@@ -5,6 +5,7 @@ categories = ["AI", "agents"]
 tags = ["AI agents", "accountability", "open source", "MCP", "cryptography"]
 draft = false
 author = "Otto Jongerius"
+description = "When an AI agent acts on your behalf, can you prove what it did? Agent Receipts gives every action a cryptographically signed, tamper-evident record."
 +++
 
 Last week, I asked an AI agent to clean up some files in a project directory. It did a great job — renamed a few things, deleted some stale configs, updated a README. I know this because I watched it happen in my terminal.

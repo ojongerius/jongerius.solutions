@@ -5,6 +5,8 @@ categories = ["AI", "agents"]
 tags = ["AI agents", "MCP", "cryptography", "open source", "GitHub", "audit trail"]
 draft = false
 author = "Otto Jongerius"
+description = "I built a signing proxy that gives every MCP tool call my AI agent makes a cryptographically signed, tamper-evident receipt — then used it to audit itself."
+image = "/images/post/shinkansen-agent-receipts.jpg"
 +++
 
 Somewhere between Kyoto temples I shipped a signing proxy for [Agent Receipts](https://agentreceipts.ai) — an open protocol that gives every AI agent action a cryptographically signed audit trail. The idea is simple: when an agent acts on your behalf, you should be able to prove what happened. Not just logs. Proof.
@@ -236,7 +238,8 @@ latest version.
 Full walkthrough: [Auditing Your GitHub MCP Server with Agent Receipts](https://agentreceipts.ai/mcp-proxy/overview/)
 
 The spec, SDKs, and proxy are all in the monorepo at
-[github.com/agent-receipts/ar](https://github.com/agent-receipts/ar).
+[github.com/agent-receipts/ar](https://github.com/agent-receipts/ar), and the
+tooling lives at [Obsigna](https://obsigna.dev).
 
 ---
 

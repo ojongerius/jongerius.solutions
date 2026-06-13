@@ -5,6 +5,8 @@ categories = ["AI", "agents"]
 tags = ["AI agents", "agent-receipts", "OpenClaw", "cryptography", "audit trail", "open source"]
 draft = false
 author = "Otto Jongerius"
+description = "Putting the Agent Receipts OpenClaw plugin to the test: every tool call my agent runs, classified, signed, and recorded as a verifiable receipt."
+image = "/images/post/max-shannon-verification.png"
 +++
 
 A few weeks back I [showed cryptographic receipts for AI agent actions](/post/auditing-github-mcp-agent-receipts/) — through an MCP signing proxy, watching every call to the GitHub MCP server. The proxy works for what flows through MCP. Plenty doesn't.
@@ -130,5 +132,6 @@ That'll do.
 
 - Plugin repo: [github.com/agent-receipts/openclaw](https://github.com/agent-receipts/openclaw)
 - Protocol spec + SDKs: [github.com/agent-receipts/ar](https://github.com/agent-receipts/ar)
+- Tooling: [Obsigna](https://obsigna.dev)
 - Docs: [agentreceipts.ai](https://agentreceipts.ai)
 - If you want the mechanics: [OpenClaw Plugin Deep Dive](https://agentreceipts.ai/blog/openclaw-plugin-deep-dive/)
