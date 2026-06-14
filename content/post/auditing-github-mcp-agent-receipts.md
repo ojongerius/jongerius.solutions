@@ -5,6 +5,8 @@ categories = ["AI", "agents"]
 tags = ["AI agents", "MCP", "cryptography", "open source", "GitHub", "audit trail"]
 draft = false
 author = "Otto Jongerius"
+description = "I built a signing proxy that gives every MCP tool call my AI agent makes a cryptographically signed, tamper-evident receipt — then used it to audit itself."
+image = "/images/post/shinkansen-agent-receipts.jpg"
 +++
 
 Somewhere between Kyoto temples I shipped a signing proxy for [Agent Receipts](https://agentreceipts.ai) — an open protocol that gives every AI agent action a cryptographically signed audit trail. The idea is simple: when an agent acts on your behalf, you should be able to prove what happened. Not just logs. Proof.
@@ -140,7 +142,7 @@ Each row is a W3C Verifiable Credential stored on disk. Here's the core of one �
 ```
 
 (The full receipt also includes W3C `@context`, issuer and principal DIDs — currently
-placeholders while the [DID method strategy](https://github.com/agent-receipts/ar/issues/46)
+placeholders while the [DID method strategy](https://github.com/agent-receipts/obsigna/issues/46)
 is finalised — and standard VC envelope fields.)
 
 The `parameters_hash` is a SHA-256 of the RFC 8785 canonical JSON of the tool call
@@ -177,8 +179,8 @@ double-dash flags (`--db`) when the binary uses single-dash Go flags (`-db`).
 
 So I filed both bugs via the proxy:
 
-- [#109 — tool name not stored in receipt, action.type always unknown](https://github.com/agent-receipts/ar/issues/109) — fixed in v0.3.3 of the proxy
-- [#101 — Docs: CLI reference shows double-dash flags but binary uses single-dash](https://github.com/agent-receipts/ar/issues/101)
+- [#109 — tool name not stored in receipt, action.type always unknown](https://github.com/agent-receipts/obsigna/issues/109) — fixed in v0.3.3 of the proxy
+- [#101 — Docs: CLI reference shows double-dash flags but binary uses single-dash](https://github.com/agent-receipts/obsigna/issues/101)
 
 Those GitHub API calls — `create_issue`, `update_issue` — have signed receipts from
 the GitHub MCP server running through the proxy. The bug reports about Agent Receipts
@@ -212,7 +214,7 @@ This is early days — proxy v0.3.3, SDKs v0.3.0. A few things I hit during the 
 
 **Placeholder DIDs.** The issuer shows as `did:agent:mcp-proxy` and principal as
 `did:user:unknown`. These are placeholders — the DID method strategy is being worked
-out in [ADR-0007](https://github.com/agent-receipts/ar/issues/46). For now they're
+out in [ADR-0007](https://github.com/agent-receipts/obsigna/issues/46). For now they're
 labels, not resolvable identifiers.
 
 **Fine-grained PATs don't work for org write access.** GitHub's org-level policy for
@@ -230,13 +232,14 @@ not just GitHub.
 go install github.com/agent-receipts/ar/mcp-proxy/cmd/mcp-proxy@v0.3.3
 ```
 
-Check the [releases page](https://github.com/agent-receipts/ar/releases) for the
+Check the [releases page](https://github.com/agent-receipts/obsigna/releases) for the
 latest version.
 
 Full walkthrough: [Auditing Your GitHub MCP Server with Agent Receipts](https://agentreceipts.ai/mcp-proxy/overview/)
 
 The spec, SDKs, and proxy are all in the monorepo at
-[github.com/agent-receipts/ar](https://github.com/agent-receipts/ar).
+[github.com/agent-receipts/obsigna](https://github.com/agent-receipts/obsigna), and the
+tooling lives at [Obsigna](https://obsigna.dev).
 
 ---
 
@@ -246,19 +249,19 @@ This is an open protocol and we're building it in the open. Here are some concre
 areas where input would be especially valuable:
 
 **Security:**
-- [Audit secret redaction patterns for edge cases](https://github.com/agent-receipts/ar/issues/150)
-- [Supply chain security: binary signing and verification](https://github.com/agent-receipts/ar/issues/151)
-- [Enforce restrictive file permissions on signing keys](https://github.com/agent-receipts/ar/issues/156)
-- [Document threat model and trust boundaries](https://github.com/agent-receipts/ar/issues/155)
+- [Audit secret redaction patterns for edge cases](https://github.com/agent-receipts/obsigna/issues/150)
+- [Supply chain security: binary signing and verification](https://github.com/agent-receipts/obsigna/issues/151)
+- [Enforce restrictive file permissions on signing keys](https://github.com/agent-receipts/obsigna/issues/156)
+- [Document threat model and trust boundaries](https://github.com/agent-receipts/obsigna/issues/155)
 
 **Protocol design:**
-- [Hash server responses in receipts, not just requests](https://github.com/agent-receipts/ar/issues/153)
-- [Define receipt schema stability and versioning policy](https://github.com/agent-receipts/ar/issues/154)
-- [Receipt export to external systems (SIEM/syslog/OTLP)](https://github.com/agent-receipts/ar/issues/152)
+- [Hash server responses in receipts, not just requests](https://github.com/agent-receipts/obsigna/issues/153)
+- [Define receipt schema stability and versioning policy](https://github.com/agent-receipts/obsigna/issues/154)
+- [Receipt export to external systems (SIEM/syslog/OTLP)](https://github.com/agent-receipts/obsigna/issues/152)
 
 **Developer experience:**
-- [`mcp-proxy init` command for guided setup](https://github.com/agent-receipts/ar/issues/148)
-- [Document proxy crash/timeout behaviour](https://github.com/agent-receipts/ar/issues/149)
+- [`mcp-proxy init` command for guided setup](https://github.com/agent-receipts/obsigna/issues/148)
+- [Document proxy crash/timeout behaviour](https://github.com/agent-receipts/obsigna/issues/149)
 
 If you're working on MCP tooling, agent governance, or verifiable credentials — or if
 you just want to poke holes in the design — pick an issue and jump in.
