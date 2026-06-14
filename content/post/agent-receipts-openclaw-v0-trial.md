@@ -131,7 +131,7 @@ That'll do.
 ---
 
 - Plugin repo: [github.com/agent-receipts/openclaw](https://github.com/agent-receipts/openclaw)
-- Protocol spec + SDKs: [github.com/agent-receipts/ar](https://github.com/agent-receipts/ar)
+- Protocol spec + SDKs: [github.com/agent-receipts/obsigna](https://github.com/agent-receipts/obsigna)
 - Tooling: [Obsigna](https://obsigna.dev)
 - Docs: [agentreceipts.ai](https://agentreceipts.ai)
 - If you want the mechanics: [OpenClaw Plugin Deep Dive](https://agentreceipts.ai/blog/openclaw-plugin-deep-dive/)
